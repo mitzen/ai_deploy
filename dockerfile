@@ -9,12 +9,18 @@ RUN pip install gunicorn
 COPY . /app
 WORKDIR /app
 
-ENTRYPOINT [ "python" ]
-CMD ["main.py" ]
+# Development server
+#ENTRYPOINT [ "python" ]
+#CMD ["main.py" ]
 
+# Debugging
 #CMD tail -f /dev/null
+
+# Miss out the app name to run the code against
+CMD ["gunicorn" ,"-b", "0.0.0.0:8000", "-w", "2", "main:app"]
+
 #ENTRYPOINT ["./gunicorn.sh"]
-#CMD ["gunicorn" , "-b", "0.0.0.0:8000", "main:app"]
+#CMD ["gunicorn" ,"-b", "0.0.0.0:8000", "main:app"]
 
 #ENTRYPOINT [ "python" ]
 #CMD [ "main.py" ]
