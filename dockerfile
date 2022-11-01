@@ -1,5 +1,6 @@
 FROM python:3.9.0-buster
 
+EXPOSE 8000
 COPY requirements.txt /
 
 RUN pip install -r /requirements.txt
