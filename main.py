@@ -10,6 +10,7 @@ import io
 # initialize our Flask application and the Keras model
 app = flask.Flask(__name__)
 model = None
+applicationMode = 0
 
 def load_model():
 	# load the pre-trained Keras model (here we are using a model
@@ -72,6 +73,8 @@ if __name__ == "__main__":
 	print(("* Loading Keras model and Flask starting server..."
 		"please wait until server has fully started"))
 	load_model()
+	applicationMode = 1
 	app.run()	
 
-load_model()
+if applicationMode == 0:
+	load_model()

@@ -1,1 +1,1 @@
-python keras-server.py
+python main.py
